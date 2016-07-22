@@ -1,19 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Platforms - JumpUp!</title>
-    <meta charset="utf-8">
-    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
-</head>
-<body>
+var Jump1 = {};
 
-    <div id="game"></div>
-
-    <script type="text/javascript">
-
-    var game = new Phaser.Game(640, 700, Phaser.CANVAS, 'game');
-
-    var PhaserGame = function () {
+Jump1.level1 = function (game) {
 
         this.player = null;
         this.platforms = null;
@@ -28,7 +15,7 @@
 
     };
 
-    PhaserGame.prototype = {
+    Jump1.level1.prototype = {
 
         init: function () {
 
@@ -50,11 +37,11 @@
             // this.load.baseURL = 'http://files.phaser.io.s3.amazonaws.com/codingtips/issue003/';
             this.load.crossOrigin = 'anonymous';
 
-            this.load.image('trees', 'seaassets/trees.png');
-            this.load.image('clouds', 'seaassets/clouds.png');
-            this.load.image('platform', 'seaassets/platform.png');
-            this.load.image('ice-platform', 'seaassets/ice-platform.png');
-            this.load.spritesheet('dude', 'seaassets/dude.png', 32, 48);
+            this.load.image('trees', 'assets/trees.png');
+            this.load.image('clouds', 'assets/clouds.png');
+            this.load.image('platform', 'assets/platform.png');
+            this.load.image('ice-platform', 'assets/ice-platform.png');
+            this.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 
             //  Note: Graphics are Copyright 2015 Photon Storm Ltd.
 
@@ -63,12 +50,12 @@
         
         create: function () {
 
-            this.stage.backgroundColor = '#2b57c1';
+            this.stage.backgroundColor = '#000000';
 
             this.sky = this.add.tileSprite(0, 0, 640, 700, 'clouds');
             this.sky.fixedToCamera = true;
 
-//            this.add.sprite(0, 1906, 'trees');
+            this.add.sprite(0, 1906, 'trees');
 
             this.platforms = this.add.physicsGroup();
 
@@ -192,7 +179,7 @@
                     this.facing = 'idle';
                 }
             }
-
+            
             //  No longer standing on the edge, but were
             //  Give them a 250ms grace period to jump after falling
             if (!standing && this.wasStanding)
@@ -208,14 +195,8 @@
             }
 
             this.wasStanding = standing;
-
+            
         }
+    
 
     };
-
-    game.state.add('Game', PhaserGame, true);
-
-    </script>
-
-</body>
-</html>
