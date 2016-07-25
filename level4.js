@@ -1,17 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Platforms - JumpUp!</title>
-    <meta charset="utf-8">
-    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
-</head>
-<body>
-
-    <div id="game"></div>
-
-    <script type="text/javascript">
-    var game = new Phaser.Game(640, 700, Phaser.CANVAS, 'game');
-    var PhaserGame = function () {
+Jump1.level4 = function () {
         this.player = null;
         this.platforms = null;
         this.sky = null;
@@ -21,7 +8,7 @@
         this.wasStanding = false;
         this.cursors = null;
     };
-    PhaserGame.prototype = {
+    Jump1.level4.prototype = {
         init: function () {
             this.game.renderer.renderSession.roundPixels = true;
             this.world.resize(640, 2000);
@@ -153,8 +140,4 @@
             this.wasStanding = standing;
         }
     };
-    game.state.add('Game', PhaserGame, true);
-    </script>
-
-</body>
-</html>
+   

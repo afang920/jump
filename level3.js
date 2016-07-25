@@ -1,19 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Platforms - JumpUp!</title>
-    <meta charset="utf-8">
-    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
-</head>
-<body>
-
-    <div id="game"></div>
-
-    <script type="text/javascript">
-
-    var game = new Phaser.Game(640, 700, Phaser.CANVAS, 'game');
-
-    var PhaserGame = function () {
+Jump1.level3 = function () {
 
         this.player = null;
         this.platforms = null;
@@ -28,7 +13,7 @@
 
     };
 
-    PhaserGame.prototype = {
+    Jump1.level3.prototype = {
 
         init: function () {
 
@@ -40,6 +25,7 @@
 
             this.physics.arcade.gravity.y = 750;
             this.physics.arcade.skipQuadTree = false;
+           
 
         },
 
@@ -50,10 +36,11 @@
             // this.load.baseURL = 'http://files.phaser.io.s3.amazonaws.com/codingtips/issue003/';
             this.load.crossOrigin = 'anonymous';
 
-            this.load.image('cloud_background', 'skyassets/cloud_background.png');
-            this.load.image('platform', 'skyassets/sky_level_platform.png');
-            this.load.image('ice-platform', 'skyassets/sky_platform_ICE.png');
-            this.load.spritesheet('dude', 'skyassets/dude.png', 32, 48);
+            this.load.image('trees', 'seaassets/trees.png');
+            this.load.image('clouds', 'seaassets/clouds.png');
+            this.load.image('platform', 'seaassets/platform.png');
+            this.load.image('ice-platform', 'seaassets/ice-platform.png');
+            this.load.spritesheet('dude', 'seaassets/dude.png', 32, 48);
 
             //  Note: Graphics are Copyright 2015 Photon Storm Ltd.
 
@@ -62,11 +49,12 @@
         
         create: function () {
 
-            this.stage.backgroundColor = '#000000';
+            this.stage.backgroundColor = '#2b57c1';
 
-            this.sky = this.add.tileSprite(0, 0, 640, 700, 'cloud_background');
+            this.sky = this.add.tileSprite(0, 0, 640, 700, 'clouds');
             this.sky.fixedToCamera = true;
 
+//            this.add.sprite(0, 1906, 'trees');
 
             this.platforms = this.add.physicsGroup();
 
@@ -114,6 +102,7 @@
             this.camera.follow(this.player);
 
             this.cursors = this.input.keyboard.createCursorKeys();
+
 
         },
 
@@ -207,13 +196,13 @@
 
             this.wasStanding = standing;
 
+            if (this.game.input.activePointer.justPressed()){
+                this.game.state.start('level4');
+            
+            }
+
         }
 
     };
 
-    game.state.add('Game', PhaserGame, true);
 
-    </script>
-
-</body>
-</html>

@@ -1,3 +1,4 @@
+
 Jump1.level2 = function () {
 
         this.player = null;
@@ -32,14 +33,13 @@ Jump1.level2 = function () {
 
             //  We need this because the assets are on Amazon S3
             //  Remove the next 2 lines if running locally
-            // this.load.baseURL = 'http://files.phaser.io.s3.amazonaws.com/codingtips/issue003/';
+            //this.load.baseURL = 'http://files.phaser.io.s3.amazonaws.com/codingtips/issue003/';
             this.load.crossOrigin = 'anonymous';
 
-            this.load.image('trees', 'seaassets/trees.png');
-            this.load.image('clouds', 'seaassets/clouds.png');
-            this.load.image('platform', 'seaassets/platform.png');
-            this.load.image('ice-platform', 'seaassets/ice-platform.png');
-            this.load.spritesheet('dude', 'seaassets/dude.png', 32, 48);
+            this.load.image('cloud_background', 'skyassets/cloud_background.png');
+            this.load.image('platform', 'skyassets/sky_level_platform.png');
+            this.load.image('ice-platform', 'skyassets/sky_platform_ICE.png');
+            this.load.spritesheet('dude', 'skyassets/dude.png', 32, 48);
 
             //  Note: Graphics are Copyright 2015 Photon Storm Ltd.
 
@@ -48,15 +48,16 @@ Jump1.level2 = function () {
         
         create: function () {
 
-            this.stage.backgroundColor = '#2b57c1';
+            this.stage.backgroundColor = '#000000';
 
-            this.sky = this.add.tileSprite(0, 0, 640, 700, 'clouds');
+            this.sky = this.add.tileSprite(0, 0, 640, 700, 'cloud_background');
             this.sky.fixedToCamera = true;
 
-//            this.add.sprite(0, 1906, 'trees');
 
             this.platforms = this.add.physicsGroup();
 
+            
+            
             var x = 0;
             var y = 64;
 
@@ -138,6 +139,8 @@ Jump1.level2 = function () {
             var standing = this.player.body.blocked.down || this.player.body.touching.down;
 
             this.player.body.velocity.x = 0;
+            
+            
 
             if (this.cursors.left.isDown)
             {
@@ -177,8 +180,8 @@ Jump1.level2 = function () {
                     this.facing = 'idle';
                 }
             }
-
-            //  No longer standing on the edge, but were
+            
+           //  No longer standing on the edge, but were
             //  Give them a 250ms grace period to jump after falling
             if (!standing && this.wasStanding)
             {
@@ -193,9 +196,13 @@ Jump1.level2 = function () {
             }
 
             this.wasStanding = standing;
+            
+            if (this.game.input.activePointer.justPressed()){
+                this.game.state.start('level3');
+            
+            }
 
         }
 
     };
-
-
+        

@@ -1,6 +1,6 @@
 var Jump1 = {};
 
-Jump1.level1 = function (game) {
+Jump1.level1 = function () {
 
         this.player = null;
         this.platforms = null;
@@ -47,7 +47,7 @@ Jump1.level1 = function (game) {
 
         },
 
-        
+
         create: function () {
 
             this.stage.backgroundColor = '#000000';
@@ -101,6 +101,11 @@ Jump1.level1 = function (game) {
             this.player.animations.add('right', [5, 6, 7, 8], 10, true);
 
             this.camera.follow(this.player);
+            var score = 0;
+
+            var scoreText;
+
+            scoreText = this.add.text( 100, 100, 'score: 0', { fontSize: '32px', fill: '#000' });
 
             this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -140,6 +145,7 @@ Jump1.level1 = function (game) {
             var standing = this.player.body.blocked.down || this.player.body.touching.down;
 
             this.player.body.velocity.x = 0;
+            
 
             if (this.cursors.left.isDown)
             {
@@ -180,6 +186,7 @@ Jump1.level1 = function (game) {
                 }
             }
             
+            
             //  No longer standing on the edge, but were
             //  Give them a 250ms grace period to jump after falling
             if (!standing && this.wasStanding)
@@ -196,7 +203,11 @@ Jump1.level1 = function (game) {
 
             this.wasStanding = standing;
             
-        }
-    
+            if (this.game.input.activePointer.justPressed()){
+                this.game.state.start('level2');
+            
+            }
+            }
+        
 
     };

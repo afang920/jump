@@ -6,6 +6,8 @@
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
     <script src="level1.js"></script>
     <script src="level2.js"></script>
+    <script src="level3.js"></script>
+    <script src="level4.js"></script>
 </head>
 <body>
 
@@ -17,12 +19,18 @@ window.onload = function(){
     
     var game = new Phaser.Game(640, 700, Phaser.AUTO, 'gamecontainer');
     
-        
+
     game.state.add('level1',Jump1.level1);
     game.state.add('level2',Jump1.level2);
+    game.state.add('level3',Jump1.level3);
+    game.state.add('level4',Jump1.level4);
     
     game.state.start('level1');
-}
+    
+    };
+
+
+
 
     </script>
 
