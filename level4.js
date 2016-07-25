@@ -138,6 +138,10 @@ Jump1.level4 = function () {
                 this.jumpTimer = this.time.time + 750;
             }
             this.wasStanding = standing;
+            
+            if(this.player.body.y<=50){
+               this.game.state.start('level3'); 
+            }
         }
     };
    

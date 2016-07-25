@@ -54,6 +54,7 @@ Jump1.level1 = function () {
 
             this.sky = this.add.tileSprite(0, 0, 640, 700, 'clouds');
             this.sky.fixedToCamera = true;
+            
 
             this.add.sprite(0, 1906, 'trees');
 
@@ -101,6 +102,7 @@ Jump1.level1 = function () {
             this.player.animations.add('right', [5, 6, 7, 8], 10, true);
 
             this.camera.follow(this.player);
+ 
             var score = 0;
 
             var scoreText;
@@ -203,11 +205,11 @@ Jump1.level1 = function () {
 
             this.wasStanding = standing;
             
-            if (this.game.input.activePointer.justPressed()){
+            if ((this.player.body.velocity.x <= -200||this.player.body.velocity.x >=200) && this.player.body.y >= 1950){
                 this.game.state.start('level2');
             
             }
-            }
+        }
         
 
     };

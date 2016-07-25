@@ -196,9 +196,12 @@ Jump1.level3 = function () {
 
             this.wasStanding = standing;
 
-            if (this.game.input.activePointer.justPressed()){
+            if ((this.player.body.velocity.x <= -200||this.player.body.velocity.x >=200) && this.player.body.y >= 1950){
                 this.game.state.start('level4');
             
+            }
+            if(this.player.body.y<=50){
+               this.game.state.start('level2'); 
             }
 
         }

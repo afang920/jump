@@ -126,9 +126,11 @@ Jump1.level2 = function () {
             }
 
         },
+        
+    
 
         update: function () {
-
+            
             this.sky.tilePosition.y = -(this.camera.y * 0.7);
 
             this.platforms.forEach(this.wrapPlatform, this);
@@ -197,9 +199,13 @@ Jump1.level2 = function () {
 
             this.wasStanding = standing;
             
-            if (this.game.input.activePointer.justPressed()){
+            if ((this.player.body.velocity.x <= -200||this.player.body.velocity.x >=200) && this.player.body.y >= 1950){
                 this.game.state.start('level3');
             
+            }
+            
+            if(this.player.body.y<=50){
+               this.game.state.start('level1'); 
             }
 
         }
