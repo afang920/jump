@@ -57,7 +57,7 @@ Jump1.level4 = function () {
             }
             this.platforms.setAll('body.allowGravity', false);
             this.platforms.setAll('body.immovable', true);
-            this.player = this.add.sprite(320, 1952, 'dude');
+            this.player = this.add.sprite(320, 1500, 'dude');
             this.physics.arcade.enable(this.player);
             this.player.body.collideWorldBounds = true;
             this.player.body.setSize(20, 32, 5, 16);

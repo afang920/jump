@@ -42,6 +42,7 @@ Jump1.level1 = function () {
             this.load.image('platform', 'assets/platform.png');
             this.load.image('ice-platform', 'assets/ice-platform.png');
             this.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+            this.load.audio('darude', ['assets/Darude - Sandstorm.mp3']);
 
             //  Note: Graphics are Copyright 2015 Photon Storm Ltd.
 
@@ -49,6 +50,9 @@ Jump1.level1 = function () {
 
 
         create: function () {
+            var music;
+            music = this.add.audio('darude');
+            music.play();
 
             this.stage.backgroundColor = '#000000';
 
@@ -90,7 +94,7 @@ Jump1.level1 = function () {
             this.platforms.setAll('body.allowGravity', false);
             this.platforms.setAll('body.immovable', true);
 
-            this.player = this.add.sprite(320, 1952, 'dude');
+            this.player = this.add.sprite(320, 1500, 'dude');
 
             this.physics.arcade.enable(this.player);
 
@@ -205,7 +209,7 @@ Jump1.level1 = function () {
 
             this.wasStanding = standing;
             
-            if ((this.player.body.velocity.x <= -200||this.player.body.velocity.x >=200) && this.player.body.y >= 1950){
+            if (this.player.body.y >= 1950){
                 this.game.state.start('level2');
             
             }

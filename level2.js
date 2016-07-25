@@ -88,7 +88,7 @@ Jump1.level2 = function () {
             this.platforms.setAll('body.allowGravity', false);
             this.platforms.setAll('body.immovable', true);
 
-            this.player = this.add.sprite(320, 1952, 'dude');
+            this.player = this.add.sprite(320, 1500, 'dude');
 
             this.physics.arcade.enable(this.player);
 
@@ -199,7 +199,7 @@ Jump1.level2 = function () {
 
             this.wasStanding = standing;
             
-            if ((this.player.body.velocity.x <= -200||this.player.body.velocity.x >=200) && this.player.body.y >= 1950){
+            if (this.player.body.y >= 1950){
                 this.game.state.start('level3');
             
             }
