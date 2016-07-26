@@ -209,11 +209,18 @@ Jump1.level1 = function () {
 
             this.wasStanding = standing;
             
+            
             if (this.player.body.y >= 1950){
                 this.game.state.start('level2');
             
             }
+            
+            if (this.player.body.y <= 50){
+                this.game.state.start('winning');
+            
+            }
         }
+        
         
 
     };

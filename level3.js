@@ -200,6 +200,7 @@ Jump1.level3 = function () {
                 this.game.state.start('level4');
             
             }
+            
             if(this.player.body.y<=50){
                this.game.state.start('level2'); 
             }

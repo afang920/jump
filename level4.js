@@ -139,6 +139,12 @@ Jump1.level4 = function () {
             }
             this.wasStanding = standing;
             
+            
+            if (this.player.body.y >= 1950){
+                this.game.state.start('losing');
+            
+            }
+            
             if(this.player.body.y<=50){
                this.game.state.start('level3'); 
             }

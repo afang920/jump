@@ -8,6 +8,9 @@
     <script src="level2.js"></script>
     <script src="level3.js"></script>
     <script src="level4.js"></script>
+    <script src="winning.js"></script>
+    <script src="losing.js"></script>
+
 </head>
 <body>
 
@@ -24,6 +27,9 @@ window.onload = function(){
     game.state.add('level2',Jump1.level2);
     game.state.add('level3',Jump1.level3);
     game.state.add('level4',Jump1.level4);
+    game.state.add('winning',Jump1.winning);
+    game.state.add('losing',Jump1.losing);
+
     
     game.state.start('level1');
     
