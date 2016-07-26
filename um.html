@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Platforms - JumpUp!</title>
+    <meta charset="utf-8">
+    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+</head>
+<body>
+
+    <div id="game"></div>
+
+    <script type="text/javascript">
+    
+    
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create });
+
+function preload() {
+
+
+    game.load.spritesheet('button', 'assets/play-button-sing.png', 1000, 900);
+    game.load.image('background','assets/background.png', 340, 178);
+
+}
+
+var group;
+
+function create() {
+//    var text = "Ups and Downs\nClick Start to Play"
+//     var style = { font: "16px Arial", fill: "#fff", 
+//        align: "left", // the alignment of the text is independent of the bounds, try changing to 'center' or 'right'
+//        boundsAlignH: "left", 
+//        boundsAlignV: "top", 
+//        wordWrap: true, wordWrapWidth: 300 };
+//
+//    text = game.add.text(0, 0, ipsum, style);
+    
+//       var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+////    //  The Text is positioned at 0, 100
+//            text = game.add.text(300, 300, "Ups and Downs \n Click play to start!", style);
+////            text.setShadow(3, 3, 'rgba(0,0,0,0)', 2);
+////
+////    //  We'll set the bounds to be from x0, y100 and be 800px wide by 100px high
+////    text.setTextBounds(0, 100, 800, 100);
+
+   
+    
+    
+    game.add.tileSprite(0, 0, 800, 600, 'background');
+
+    group = game.add.group();
+
+    var button = game.make.button(game.world.centerX - 95, 400, 'button', removeGroup, this, 2, 1, 0);
+
+    window.rich = button;
+
+    button.onInputOver.add(over, this);
+    button.onInputOut.add(out, this);
+
+    // game.input.onDown.addOnce(removeGroup, this);
+
+    group.add(button);
+
+}
+
+function removeGroup() {
+
+    game.world.remove(group);
+
+    // group.destroy();
+
+}
+        function update(){
+            bmpText.text = 'Phaser & Pixi\nrocking!\n'
+        }
+
+function over() {
+    console.log('button over');
+}
+
+function out() {
+    console.log('button out');
+}
+
+function actionOnClick () {
+
+    console.log('button clicked');
+
+}
+    
+ </script>
+
+</body>
+</html>
